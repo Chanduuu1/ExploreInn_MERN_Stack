@@ -1,0 +1,129 @@
+<% layout("/layouts/boilerplate") %>
+<script>
+  const mapToken = "<%= process.env.MAP_TOKEN %>";
+  const listing = <%- JSON.stringify(listingD) %>;
+</script>
+
+<div class="row">
+  <div class="col-8 offset-3">
+    <h3><b><%= listingD.title %></b></h3>
+  </div>
+  <div class="col-6 offset-3">
+    <div class="card listing-card">
+      <img
+        src="<%= listingD.image.url%>"
+        class="card-img-top show-img"
+        alt="listing_image"
+      />
+      <div class="card-body">
+        <p class="card-text"></p>
+        <p>
+          Owned By <I><b><%= listingD.owner.username %></b></I> <br /><br />
+        </p>
+        <p><%= listingD.description %><br /></p>
+        <p><b>&#8377;<%= listingD.price.toLocaleString("en-IN") %></b><br /></p>
+        <p><b><%= listingD.location %></b><br /></p>
+        <p><b><%= listingD.country %></b><br /></p>
+        <!-- </p> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if (currUser && currUser._id.equals(listingD.owner._id)){%>
+<div class="col-3 offset-3 btn-grp">
+  <form action="/listings/<%= listingD._id %>/edit" method="get">
+    <button class="btn btn-dark show-edit-btn">Edit this listing</button>
+  </form>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <form action="/listings/<%= listingD._id %>?_method=DELETE" method="POST">
+    <button class="btn btn-dark">Delete this listing</button>
+  </form>
+  <br />
+</div>
+
+<%} %>
+<br />
+<div class="col-8 offset-3 mb-3 mt-3">
+  <hr />
+  <% if(currUser){%>
+  <h4>Leave a Review!</h4>
+  <form
+    action="/listings/<%=listingD._id%>/reviews"
+    method="POST"
+    novalidate
+    class="needs-validation"
+  >
+    <div class="mb-3 mt-3">
+      <fieldset class="starability-coinFlip">
+        <legend>Rating</legend>
+        <input
+          type="radio"
+          id="no-rate"
+          class="input-no-rate"
+          name="review[rating]"
+          value="1"
+          checked
+          aria-label="No rating."
+        />
+        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+        <label for="first-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+        <label for="first-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+        <label for="first-rate3" title="Average">3 stars</label>
+        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+        <label for="first-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+        <label for="first-rate5" title="Amazing">5 stars</label>
+      </fieldset>
+    </div>
+
+    <div class="mb-3 mt-3">
+      <label for="comment" class="form-label">Comments</label>
+      <textarea
+        id="comment"
+        name="review[comment]"
+        cols="20"
+        rows="5"
+        class="form-control"
+        required
+      ></textarea>
+      <div class="invalid-feedback">Please add some reviews to the comment</div>
+    </div>
+
+    <button class="btn btn-outline-dark">Submit Review</button>
+    <%}%>
+  </form>
+
+  <hr />
+  <% if(listingD.review.length){%>
+  <h4><b>Some of our customer review</b></h4>
+
+  <div class="row">
+    <% for(reviews of listingD.review) {%>
+    <div class="card col-5 ms-2 mb-4">
+      <div class="card-body">
+        <h5 class="card-text"><I><%=reviews.author.username%></I></h5>
+        <p class="card-text"><%= reviews.comment %>, &nbsp;</p>
+        <p class="starability-result" data-rating="<%= reviews.rating%>"></p>
+      </div>
+      <form
+        class="mb-2 mt-2"
+        action="/listings/<%=listingD._id%>/reviews/<%=reviews._id%>?_method=DELETE"
+        method="POST"
+      >
+        <button class="btn btn-dark">delete review</button>
+      </form>
+    </div>
+    <%}%>
+  </div>
+  <%}%>
+</div>
+
+<div class="col-8 offset-3 mb-3 mt-3">
+  <h3>Where you'll be</h3>
+  <div id="map"></div>
+</div>
+
+<script src="/js/map.js"></script>

@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExploreInn</title>
+  </head> -->
+<% layout("/layouts/boilerplate") %>
+<body>
+  <br />
+  <h3>Create a new Listing</h3>
+  <br />
+  <div class="row">
+    <div class="col-8 offset-2">
+      <form
+        action="/listings"
+        method="post"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            name="listing[title]"
+            placeholder="Enter Title"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">The Title is Perfect</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            name="listing[description]"
+            placeholder="Enter Description"
+            type="text"
+            class="form-control"
+            required
+          ></textarea>
+          <div class="invalid-feedback">The Description is too long</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Image URL</label>
+          <input
+            name="listing[image]"
+            type="file"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price </label>
+            <input
+              name="listing[price]"
+              placeholder="Enter the price"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">
+              Enter valid price for your listing
+            </div>
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Country </label>
+            <input
+              name="listing[country]"
+              placeholder="Enter youur Country"
+              type="text"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Country Details</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">Location </label>
+          <input
+            name="listing[location]"
+            placeholder="Enter the location of listing"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Enter location</div>
+          <div class="valid-feedback">Perfect</div>
+        </div>
+
+        <br /><br />
+        <button class="btn btn-dark add-btn">Add</button>
+        <br /><br />
+      </form>
+    </div>
+  </div>
+</body>
+<!-- </html> -->
