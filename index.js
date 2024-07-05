@@ -99,7 +99,7 @@ app.get("/demouser", async (req, res) => {
 });
 
 app.get("https://exploreinn-mern-stack.onrender.com/", (req, res) => {
-  res.redirect("/listings");
+  res.redirect("https://exploreinn-mern-stack.onrender.com/listings");
 });
 
 app.use("/listings", listingsRouter); // takes you directly to listings route!
