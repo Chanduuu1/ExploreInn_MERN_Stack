@@ -98,7 +98,7 @@ app.get("/demouser", async (req, res) => {
   res.send(registeredUser);
 });
 
-app.get("/", (req, res) => {
+app.get("https://exploreinn-mern-stack.onrender.com/", (req, res) => {
   res.redirect("/listings");
 });
 
