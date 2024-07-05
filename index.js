@@ -98,6 +98,10 @@ app.get("/demouser", async (req, res) => {
   res.send(registeredUser);
 });
 
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 app.use("/listings", listingsRouter); // takes you directly to listings route!
 
 app.use("/listings/:id/reviews", reviewsRouter);
