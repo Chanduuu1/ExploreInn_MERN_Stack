@@ -3,11 +3,12 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
   }
   .filter {
     text-align: center;
     margin-right: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
     opacity: 0.7;
   }
   .filter:hover {
@@ -25,67 +26,167 @@
     height: 3.5rem;
     padding: 1rem;
   }
+  .quote-class {
+    display: flex;
+    align-items: center;
+    height: 150px;
+    width: 500px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    justify-content: center;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 10px;
+  }
+  .super-class {
+    display: flex;
+    justify-content: center;
+  }
+  .filter-btns {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 0px;
+    border-radius: 5px;
+    align-items: center;
+    margin-left: 1rem;
+  }
+  .filter-btns:hover {
+    background-color: rgb(254, 17, 17);
+    color: rgb(255, 255, 255) !important;
+  }
+  .filter-btn-div {
+    margin-top: 12px;
+  }
+  .filter-btn-div:hover {
+    margin-top: 12px;
+    color: white;
+  }
+  .form {
+    margin-top: 5px;
+    margin-bottom: 3px;
+  }
+  .rescuerA {
+    text-decoration: none;
+    color: black;
+  }
 </style>
 
 <% layout("/layouts/boilerplate") %>
 <div id="filters">
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>trending</p>
+  <form class="form" action="">
+    <button type="button" class="filter-btns" data-query="iit-jee">
+      <a class="rescuerA" href="/listings?q=iit-jee">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-atom"></i>
+          <p class="insideBtn">IIT-JEE</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="neet">
+      <a class="rescuerA" href="/listings?q=neet">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-capsules"></i>
+          <p class="insideBtn">NEET</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="upsc">
+      <a class="rescuerA" href="/listings?q=upsc">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-person-military-rifle"></i>
+          <p>UPSC</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="gate">
+      <a class="rescuerA" href="/listings?q=gate">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-gears"></i>
+          <p>GATE</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="xii-science">
+      <a class="rescuerA" href="/listings?q=12science">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-1"></i><i class="fa-solid fa-2"></i> S
+          <p>XII-Science</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="gre">
+      <a class="rescuerA" href="/listings?q=gre">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-earth-americas"></i>
+          <p>GRE</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="engineering">
+      <a class="rescuerA" href="/listings?q=engineering">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-rocket"></i>
+          <p>Engineering</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="languages">
+      <a class="rescuerA" href="/listings?q=languages">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-om"></i>
+          <p>Languages</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="ca">
+      <a class="rescuerA" href="/listings?q=ca">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-receipt"></i>
+          <p>CA</p>
+        </div>
+      </a>
+    </button>
+    <button type="button" class="filter-btns" data-query="xii-commerce">
+      <a class="rescuerA" href="/listings?q=12commerce">
+        <div class="filter-btn-div">
+          <i class="fa-solid fa-1"></i><i class="fa-solid fa-2"></i> C
+          <p>XII-Commerce</p>
+        </div>
+      </a>
+    </button>
+  </form>
+</div>
+<!-- <div class="tax-toggle">
+  <div class="form-check form-switch form-check-reverse">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="flexSwitchCheckReverse"
+    />
+    <label class="form-check-label" for="flexSwitchCheckReverse"
+      >Display total after taxes
+    </label>
   </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-bed"></i></div>
-    <p>Room</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-tree-city"></i></div>
-    <p>Iconic Cities</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain"></i></div>
-    <p>Mountains</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-tree-city"></i></div>
-    <p>Iconic Cities</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-brands fa-fort-awesome"></i></div>
-    <p>castles</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-person-swimming"></i></div>
-    <p>pool</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-person-hiking"></i></div>
-    <p>camping</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-umbrella-beach"></i></div>
-    <p>beach</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-cow"></i></div>
-    <p>Farms</p>
-  </div>
+</div> -->
 
-  <div class="tax-toggle">
-    <div class="form-check form-switch form-check-reverse">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        id="flexSwitchCheckReverse"
-      />
-      <label class="form-check-label" for="flexSwitchCheckReverse"
-        >Display total after taxes
-      </label>
-    </div>
+<div class="super-class">
+  <div class="quote-class">
+    <p style="font-weight: 600">
+      <i
+        >Every year more than 320 million of books get recycled, but along with
+        these books, the knowledge inside them gets washed away too! Vidhya
+        Balam emphasizes the redistribution of these books so knowledge get
+        preserved!</i
+      >
+    </p>
   </div>
 </div>
 
 <div class="row rows-cols-lg-3 rows-cols-md-2 rows-cols-sm-1 mt-4">
-  <% for(let listing of allListings){ %>
+  <h1><%=exam%></h1>
+  <% for(let listing of allListings){ %> <% if(exam && listing.hashtag === exam)
+  { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
     <div class="card listing-card">
       <img
@@ -95,18 +196,36 @@
         style="height: 20rem"
       />
       <div class="card-img-overlay"></div>
-      <!-- inbuilt bootstrap class  jo upar h-->
-
       <div class="card-body">
         <p class="card-text">
           <b><%= listing.title %> <br /></b>
-          &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+          &#8377;<%= listing.price.toLocaleString("en-IN") %>
           <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
         </p>
       </div>
     </div>
   </a>
-  <% } %>
+  <% } else if (!exam) { %>
+  <a href="/listings/<%= listing._id %>" class="listing-link">
+    <div class="card listing-card">
+      <img
+        src="<%= listing.image.url %>"
+        class="card-img-top"
+        alt="listing_image"
+        style="height: 20rem"
+      />
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <p class="card-text">
+          <b><%= listing.title %> <br /></b>
+          &#8377;<%= listing.price.toLocaleString("en-IN") %>
+          <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+          <%= listing.hashtag %>
+        </p>
+      </div>
+    </div>
+  </a>
+  <% } %> <% } %>
 </div>
 
 <script>

@@ -8,6 +8,9 @@ const listingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  hashtag: {
+    type: String,
+  },
   description: {
     type: String,
   },

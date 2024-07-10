@@ -20,13 +20,42 @@
     padding: 0.5rem 3rem 0.5rem 3rem;
     border: 1.2px solid grey;
   }
+  /* .nav-link {
+    border: 1px solid black !important;
+    border-radius: 7px;
+    height: 50px;
+    display: flex;
+    background-color: #fe424d;
+    color: white;
+    align-items: center;
+  } */
+  .nav-link:hover {
+    color: #f34235 !important;
+    text-decoration: none;
+  }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"
-      ><i class="fa-regular fa-compass"></i> &nbsp; ExploreInn</a
-    >
+    <div class="logo-main">
+      <a class="navbar-brand" href="/listings"
+        ><i
+          class="fa-solid fa-book-open"
+          style="color: black; font-size: 1.7rem"
+        ></i>
+        &nbsp;
+        <p
+          style="
+            font-size: 1.7rem;
+            color: #f34235;
+            font-weight: 600;
+            display: inline;
+          "
+        >
+          Vidha Balam
+        </p></a
+      >
+    </div>
     <button
       class="navbar-toggler"
       type="button"
@@ -36,10 +65,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
-      </div>
-
       <div class="navbar-nav ms-auto">
         <form class="d-flex" role="search">
           <input
@@ -55,12 +80,13 @@
       </div>
 
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Add New Listing</a>
+        <!-- <b><a class="nav-link" href="/listings">Explore</a> </b> -->
+        <b><a class="nav-link" href="/listings/new">Add New Listing</a></b>
         <% if(!currUser){ %>
-        <a class="nav-link" href="/login">LogIn</a>
-        <a class="nav-link" href="/signup">SignUp</a>
+        <b><a class="nav-link" href="/login">LogIn</a></b>
+        <b><a class="nav-link" href="/signup">SignUp</a></b>
         <%}%> <% if(currUser){ %>
-        <a class="nav-link" href="/logout">LogOut</a>
+        <b><a class="nav-link" href="/logout">LogOut</a></b>
         <%}%>
       </div>
     </div>
