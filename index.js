@@ -99,6 +99,7 @@ app.get("/demouser", async (req, res) => {
 });
 
 app.get("https://exploreinn-mern-stack.onrender.com/", (req, res) => {
+  console.log("khada hu aaj bhi yahin");
   res.redirect("https://exploreinn-mern-stack.onrender.com/listings");
 });
 
