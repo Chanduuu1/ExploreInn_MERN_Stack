@@ -67,9 +67,10 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate); // setting engine;
 app.use(express.static(path.join(__dirname, "/public")));
 
-// app.get("/", (req, res) => {
-//   res.send("Hello you are at root directory");
-// });
+app.get("/", (req, res) => {
+  // res.send("Hello you are at root directory");
+  res.redirect("/listings");
+});
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -98,10 +99,9 @@ app.get("/demouser", async (req, res) => {
   res.send(registeredUser);
 });
 
-app.get("https://exploreinn-mern-stack.onrender.com/", (req, res) => {
-  console.log("khada hu aaj bhi yahin");
-  res.redirect("https://exploreinn-mern-stack.onrender.com/listings");
-});
+// app.get("/", (req, res) => {
+//   // console.log("khada hu aaj bhi yahin");
+// });
 
 app.use("/listings", listingsRouter); // takes you directly to listings route!
 
