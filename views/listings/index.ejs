@@ -70,6 +70,35 @@
     text-decoration: none;
     color: black;
   }
+  @import url(https://fonts.googleapis.com/css?family=Khula:700);
+  body {
+    background: white;
+  }
+  .hidden {
+    opacity: 0;
+  }
+  .console-container {
+    font-family: Khula !important;
+    font-size: 1.3em;
+    text-align: center;
+    height: 100px;
+    width: 700px;
+    display: block;
+    color: white;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .console-underscore {
+    display: inline-block;
+    position: relative;
+    top: -0.14em;
+    left: 10px;
+  }
 </style>
 
 <% layout("/layouts/boilerplate") %>
@@ -157,33 +186,13 @@
     </button>
   </form>
 </div>
-<!-- <div class="tax-toggle">
-  <div class="form-check form-switch form-check-reverse">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      id="flexSwitchCheckReverse"
-    />
-    <label class="form-check-label" for="flexSwitchCheckReverse"
-      >Display total after taxes
-    </label>
-  </div>
-</div> -->
 
-<div class="super-class">
-  <div class="quote-class">
-    <p style="font-weight: 600">
-      <i
-        >Every year more than 320 million of books get recycled, but along with
-        these books, the knowledge inside them gets washed away too! Vidhya
-        Balam emphasizes the redistribution of these books so knowledge get
-        preserved!</i
-      >
-    </p>
-  </div>
+<div class="console-container" style="font-family: khula">
+  <span id="text"></span>
+  <div class="console-underscore" id="console">&#95;</div>
 </div>
 
-<div class="row rows-cols-lg-3 rows-cols-md-2 rows-cols-sm-1 mt-4">
+<div class="row rows-cols-lg-3 rows-cols-md-2 rows-cols-sm-1">
   <h1><%=exam%></h1>
   <% for(let listing of allListings){ %> <% if(exam && listing.hashtag === exam)
   { %>
@@ -229,6 +238,61 @@
 </div>
 
 <script>
+  consoleText(
+    [
+      "Every year, over 320 million books are recycled, losing valuable knowledge. Vidhya Balam promotes redistributing these books to preserve their wisdom!",
+      "Made With Love <3",
+    ],
+    "text",
+    ["tomato", "lightblue"]
+  );
+
+  function consoleText(words, id, colors) {
+    if (colors === undefined) colors = ["#fff"];
+    var visible = true;
+    var con = document.getElementById("console");
+    var letterCount = 1;
+    var x = 1;
+    var waiting = false;
+    var target = document.getElementById(id);
+    target.setAttribute("style", "color:" + colors[0]);
+    window.setInterval(function () {
+      if (letterCount === 0 && waiting === false) {
+        waiting = true;
+        target.innerHTML = words[0].substring(0, letterCount);
+        window.setTimeout(function () {
+          var usedColor = colors.shift();
+          colors.push(usedColor);
+          var usedWord = words.shift();
+          words.push(usedWord);
+          x = 1;
+          target.setAttribute("style", "color:" + colors[0]);
+          letterCount += x;
+          waiting = false;
+        }, 1000);
+      } else if (letterCount === words[0].length + 1 && waiting === false) {
+        waiting = true;
+        window.setTimeout(function () {
+          x = -1;
+          letterCount += x;
+          waiting = false;
+        }, 1000);
+      } else if (waiting === false) {
+        target.innerHTML = words[0].substring(0, letterCount);
+        letterCount += x;
+      }
+    }, 50);
+    window.setInterval(function () {
+      if (visible === true) {
+        con.className = "console-underscore hidden";
+        visible = false;
+      } else {
+        con.className = "console-underscore";
+
+        visible = true;
+      }
+    }, 100);
+  }
   let taxSwitch = document.getElementById("flexSwitchCheckReverse");
   taxSwitch.addEventListener("click", () => {
     let taxInfo = document.getElementsByClassName("tax-info");

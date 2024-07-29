@@ -71,6 +71,9 @@ app.get("/", (req, res) => {
   // res.send("Hello you are at root directory");
   res.redirect("/listings");
 });
+app.get("/test", (req, res) => {
+  res.render("listings/testingStyle.ejs");
+});
 
 app.use(session(sessionOptions));
 app.use(flash());
